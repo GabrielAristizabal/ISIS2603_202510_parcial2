@@ -1,5 +1,7 @@
 # ISIS2603202510ParcialPractico2
 
+Gabriel Aristizabal Garcia - 202110699
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
 
 ## Development server
