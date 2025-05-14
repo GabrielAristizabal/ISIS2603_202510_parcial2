@@ -19,7 +19,7 @@ export class CandidatosDetailComponent implements OnInit {
     private candidatosService: CandidatosService) { }
 
   getCandidato(){
-    this.candidatosService.getCandidatos(this.candidatoId).subscribe(apiData => {
+    this.candidatosService.getCandidato(this.candidatoId).subscribe(apiData => {
 
     })
   }

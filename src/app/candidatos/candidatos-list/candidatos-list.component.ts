@@ -19,7 +19,7 @@ export class CandidatosListComponent implements OnInit {
   constructor(private candidatosService: CandidatosService) { }
 
   getCandidatos(): void {
-    this.candidatosService.getCandidatos('').subscribe({next: apiData => this.candidatos = apiData });
+    this.candidatosService.getCandidatos().subscribe({next: apiData => this.candidatos = apiData });
   }
 
   seleccionarCandidato(cand: Candidatos): void {
