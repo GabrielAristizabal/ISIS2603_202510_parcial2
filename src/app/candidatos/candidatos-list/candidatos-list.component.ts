@@ -11,7 +11,7 @@ import { Candidatos } from '../candidatos';
 export class CandidatosListComponent implements OnInit {
   candidatos: Array<Candidatos> = [];
   selected: boolean = false;
-  selectedCand!: Candidatos;
+  candidatoSeleccionado!: Candidatos;
   p: number = 1;
   searchedCand: any;
 
@@ -21,9 +21,9 @@ export class CandidatosListComponent implements OnInit {
     this.candidatosService.getCandidatos().subscribe({next: apiData => this.candidatos = apiData });
   }
 
-  onSelected(cand: Candidatos): void {
+  seleccionarCandidato(cand: Candidatos): void {
     this.selected = true;
-    this.selectedCand = cand;
+    this.candidatoSeleccionado = cand;
   }
 
   ngOnInit() {
