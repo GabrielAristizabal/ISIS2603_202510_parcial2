@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CandidatosService } from '../canditatos.service';
+import { Candidatos } from '../candidatos';
+
 
 @Component({
   selector: 'app-candidatos-detail',
@@ -7,8 +11,25 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrl: './candidatos-detail.component.css'
 })
 export class CandidatosDetailComponent implements OnInit {
-  @Input() candidato: any;
+  candidatoId!: string;
+  @Input() candidato!: Candidatos;
 
-  constructor() {}
-  ngOnInit() {}
+  constructor(
+    private route: ActivatedRoute,
+    private candidatosService: CandidatosService) { }
+
+  getCandidato(){
+    this.candidatosService.getCandidatos(this.candidatoId).subscribe(apiData => {
+
+    })
+  }
+
+  ngOnInit() {
+    if(this.candidato === undefined){
+      this.candidatoId = this.route.snapshot.paramMap.get('id')!
+      if(this.candidatoId){
+        this.getCandidato();
+      }
+    }
+  }
 }

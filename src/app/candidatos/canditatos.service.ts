@@ -8,15 +8,21 @@ import { Candidatos } from './candidatos';
   providedIn: 'root',
 })
 export class CandidatosService {
-  private apiUrl: string = "https://raw.githubusercontent.com/k-garces/ISIS2603_202510_parcial2/refs/heads/main/jsons";
+  private _apiUrl: string = "https://raw.githubusercontent.com/k-garces/ISIS2603_202510_parcial2/refs/heads/main/jsons/";
+  public get apiUrl(): string {
+    return this._apiUrl;
+  }
+  public set apiUrl(value: string) {
+    this._apiUrl = value;
+  }
 
   constructor(private http: HttpClient) {}
 
-  getCandidatos(): Observable<Candidatos[]> {
-    return this.http.get<Candidatos[]>(this.apiUrl + "/" + "candidates.json")
+  getCandidatos(candidatoId: string): Observable<Candidatos[]> {
+    return this.http.get<Candidatos[]>(this.apiUrl + "candidates.json")
   }
 
-  getCantidato(id: string): Observable<Candidatos> {
-    return this.http.get<Candidatos>(this.apiUrl + "/" + id + "/" + "candidates.json");
+  getCandidato(id: string): Observable<Candidatos> {
+    return this.http.get<Candidatos>(this.apiUrl + id + "/" + "candidates.json");
   }
 }
